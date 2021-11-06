@@ -1,0 +1,70 @@
+body {
+    background-image: url('/static/sauce/images/images test.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    font-family: 'Roboto';
+    z-index: 1;
+}
+.form-label{
+    font-size: 20px;
+}
+.login-box{
+    background-color: #A0A2CD;
+    width: 45%;
+    height: 50%;
+    border: 5px solid rgb(105, 78, 163);
+    border-radius: 25px;
+    padding: 30px;
+    font-size: large;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+.dot{
+    height: 225px;
+    width: 250px;
+    background-color: rgb(255, 255, 255);
+    background-size: contain;
+    border: 3px solid black;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 8.5%;
+    left: 43.5%;
+    z-index: 2;
+}
+.eye img{ 
+    height: 120px;
+    width: 120px;
+    position: relative;
+    margin: auto;
+    top:auto;
+    left:auto;
+    display: block;
+}
+.decorate1 img{
+    height: 348px;
+    width: 348px;
+    top: -1%;
+    left: 15%;
+    position: absolute;
+    z-index: 4;
+    animation: mymove 10s infinite;
+}
+@keyframes mymove {
+    25% {transform: rotate(15deg);}
+    50% {transform: rotate(-25deg);}
+    75% {transform: rotate(15deg);}
+    100% {transform: rotate(0deg);}
+}
+.decorate2 img{
+    height: 248px;
+    width: 348px;
+    top: 55%;
+    left: 65%;
+    position: absolute;
+    z-index: 4;
+}

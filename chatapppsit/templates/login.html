@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Chat APP</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'sauce/css/login.css' %}">
+  </head>
+  <body>
+    <span class="dot">
+    <span class="eye">
+     <img src="{% static 'sauce/images/eye.png' %}">
+    </span>
+    </span>
+    <span class="decorate1">
+     <img src="{% static 'sauce/images/decrate_1.png' %}">
+    </span>
+    <span class="decorate2">
+     <img src="{% static 'sauce/images/pumpkin.png' %}">
+    </span>
+    <div class="background">
+     <div class="login-box">
+        <form>
+        <br>
+          <div class="login">
+            <label for="exampleInputEmail1" class="form-label" style=" font-weight: bold;">Username</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@exaple.com">
+           <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+        <br>
+          <div class="login">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+        <br>
+          <div class="login">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+        <br>
+          <div class="login">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          &nbsp;
+          &nbsp;
+          <a href="signup">Sign Up !!</a>
+          </div>
+        </form>
+     </div>
+    </div>
+    </body>
+</html>
