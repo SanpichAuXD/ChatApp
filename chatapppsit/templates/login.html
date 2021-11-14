@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
  <head>
@@ -7,43 +6,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela">
     <title>Chat APP</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'sauce/css/login.css' %}">
   </head>
   <body>
-    <span class="dot">
-    <span class="eye">
-     <img src="{% static 'sauce/images/eyes.gif' %}">
-    </span>
-    </span>
-    <span class="decorate1">
-     <img src="{% static 'sauce/images/decrate_1.png' %}">
-    </span>
-    <span class="decorate2">
-     <img src="{% static 'sauce/images/pumpkin.png' %}">
-    </span>
     <div class="background">
      <div class="login-box">
       <div class="box">
-        <h2>Login</h2>      
+        <h3 style="color: black; font-family: Varela; font-size=1.5625rem">Login</h3>
+        <br>     
       </div>
         <form>
-        <br>
+        <br><br>
           <div class="login">
             <label for="exampleInputEmail1" class="form-label">Username</label>
             <input type="username" class="form-control" id="input" aria-describedby="emailHelp" placeholder="username">
-          </div><br>
-          <div class="login">
+            <br>
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input type="password" class="form-control" id="input" placeholder="Password">
-          </div><br>
-          <div class="login">
-          <button type="submit" class="button1">Login</button>
-          </div><br>
-         <div class="login">
-         <a href="signup" style="text-decoration: none;">Sign Up</a>
-         </div>
+          <br>
+            <button type="submit" class="button1">Login</button>
+            <br><br>
+            <a href="signup" style="text-decoration: none;">Sign Up</a>
+          </div>
         </form>
      </div>
     </div>
