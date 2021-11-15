@@ -13,25 +13,31 @@
     <link rel="stylesheet" href="{% static 'sauce/css/signup.css' %}">
   </head>
   <body>
+    {% if messages%}
+    <div class="alert alert-danger" role="alert">
+    {% for message in messages %}
+    <h2 style="text-align: center;">{{message}}</h2>
+    {% endfor %}
+    </div>
+    {% endif %}
+   <form action="register" method="post">
+    {% csrf_token %}
     <div class="sign-up-box">
         <div class="box">
             <h3 style="color: black;; font-size: 1.5625rem;">Sign Up</h3>      
         </div>
         <div class="sign-up">
             <label  class="form-label">Username</label>
-            <input type="username" class="form-control" placeholder="username">
-        </div><br>
-        <div class="sign-up">
+            <input type="username" class="form-control" name="username" placeholder="username">
+        <br>
             <label  class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@example.com">
-        </div><br>
-        <div class="sign-up">
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@example.com">
+        <br>
             <label class="form-label">Password</label>
-            <input type="password" class="form-control" id="sign-up" placeholder="Password">
-        </div><br>
-        <div class="sign-up">
+            <input type="password" class="form-control" name="password" id="sign-up" placeholder="Password">
+        <br>
             <label class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="sign-up" placeholder="Confirm Password">
+            <input type="password" class="form-control" name="repassword" id="sign-up" placeholder="Confirm Password">
         </div><br><br>
         <div class="sign-up">
             <button  class="button1 ">Sign Up !!</button>

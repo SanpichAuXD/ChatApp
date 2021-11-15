@@ -11,21 +11,29 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'sauce/css/login.css' %}">
   </head>
-  <body>
+  <body>  
+    {% if messages%}
+    <div class="alert alert-danger" role="alert">
+    {% for message in messages %}
+    <h2 style="text-align: center;">{{message}}</h2>
+    {% endfor %}
+    </div>
+    {% endif %}
     <div class="background">
      <div class="login-box">
       <div class="box">
-        <h3 style="color: black; font-family: Varela; font-size=1.5625rem">Login</h3>
+        <h3 style="color: black; font-family: Varela; font-size:1.5625rem">Login</h3>
         <br>     
       </div>
-        <form>
+        <form action="login" method="post">
         <br><br>
+        {% csrf_token %}
           <div class="login">
             <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="username" class="form-control" id="input" aria-describedby="emailHelp" placeholder="username">
+            <input type="username" name="username" class="form-control" id="input" aria-describedby="emailHelp" placeholder="username">
             <br>
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="input" placeholder="Password">
+            <input type="password" name="password"class="form-control" id="input" placeholder="Password">
           <br>
             <button type="submit" class="button1">Login</button>
             <br><br>

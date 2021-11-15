@@ -20,6 +20,10 @@ from Chatapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.login),
-    path('signup', views.signup)
+    path('', views.loginform),
+    path('signup', views.signup),
+    path('register', views.register),
+    path('login', views.login),
+    path('home', views.home),
+    path('logout', views.logout)
 ]
