@@ -1,3 +1,6 @@
+* {
+    font-family: Varela;
+}
 html, body {
     width: 100%;
     height:100%;
@@ -46,5 +49,47 @@ button:hover{
         color: white;
 }
 a {
-    text-decoration: none;
+   text-decoration: none;
+}
+.home-box{
+    /* boxใหญ่ */
+    background-color:white;
+    width: 40rem;
+    height: 40rem;
+    border: 2px solid rgb(105, 78, 163);
+    border-radius: 1.6rem;
+    padding: 2rem;
+    font-size: large;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    margin: 0 auto;
+    max-width: 50rem;
+}
+.home .button-home {
+    /* ปุ่ม Let's Chat */
+    background-color: white; 
+    color: black; 
+    border: 2px solid rgb(105, 78, 163);
+  }
+.button-home:hover{
+    /* เปลี่ยนสีเมื่อเม้าส์ชี้ ปุ่ม Let's Chat*/
+        background-color: rgb(105, 78, 163);
+        color: white;
+}
+.button-home{
+    /* all the button */
+    border: none;
+    border-radius: 1.875rem;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 2rem;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 15rem;
+    margin: 0 auto;
+    display: block;
 }

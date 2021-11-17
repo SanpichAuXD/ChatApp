@@ -10,6 +10,8 @@ def signup(request):
     return render(request, 'signup.html')
 def home(request):
     return render(request, 'home.html')
+def profile(request):
+    return render(request, 'profile.html')
 def register(request):
     username=request.POST['username']
     email=request.POST['email']
@@ -21,6 +23,18 @@ def register(request):
             return redirect('/signup')
         elif User.objects.filter(email=email).exists():
             messages.info(request, "This email already exists")
+            return redirect('/signup')
+        elif not username:
+            messages.info(request, "Please enter username")
+            return redirect('/signup')
+        elif not email:
+            messages.info(request, "Please enter email")
+            return redirect('/signup')
+        elif not password:
+            messages.info(request, "Please enter password")
+            return redirect('/signup')
+        elif not repassword:
+            messages.info(request, "Please enter repassword")
             return redirect('/signup')
         else:
             user = User.objects.create_user(
@@ -42,6 +56,12 @@ def login(request):
     if user is not None :
         auth.login(request,user)
         return redirect('/home')
+    elif not username :
+        messages.info(request, "Please enter username")
+        return redirect('/')
+    elif not password :
+        messages.info(request, "Please enter password")
+        return redirect('/')
     else :
         messages.info(request, "password is incorrect or there is no user with such name")
         return redirect('/')

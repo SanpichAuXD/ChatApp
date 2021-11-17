@@ -7,7 +7,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela">
-    <title>Chat APP</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
+    <title>Login-Chat APP</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'sauce/css/login.css' %}">
   </head>
@@ -17,30 +18,29 @@
     {% for message in messages %}
     <h2 style="text-align: center;">{{message}}</h2>
     {% endfor %}
-    </div>
     {% endif %}
+    </div>
     <div class="background">
      <div class="login-box">
-      <div class="box">
-        <h3 style="color: black; font-family: Varela; font-size:1.5625rem">Login</h3>
+        <h3 style="text-align: center; color: black; font-size:2rem ; font-family: Anton ">Login</h3>
         <br>     
-      </div>
         <form action="login" method="post">
-        <br><br>
         {% csrf_token %}
           <div class="login">
-            <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="username" name="username" class="form-control" id="input" aria-describedby="emailHelp" placeholder="username">
+            <label for="exampleInput" class="form-label">Username</label>
+            <img class="input" src={% static 'sauce/images/username.png' %} width="25">
+            <input type="username" name="username" class="form-control" id="input" placeholder="username">
             <br>
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" name="password"class="form-control" id="input" placeholder="Password">
+            <img class="input" src={% static 'sauce/images/password.png' %} width="25">
+            <input  type="password" name="password"class="form-control" id="input" placeholder="Password">
           <br>
             <button type="submit" class="button1">Login</button>
-            <br><br>
+            <br>
             <a href="signup" style="text-decoration: none;">Sign Up</a>
           </div>
         </form>
      </div>
     </div>
-    </body>
+  </body>
 </html>

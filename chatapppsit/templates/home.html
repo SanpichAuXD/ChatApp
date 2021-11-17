@@ -6,7 +6,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Chat APP</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
+    <title>Home-Chat APP</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'sauce/css/home.css' %}">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -22,27 +25,50 @@
               <a class="nav-link active" style="text-decoration: none;" aria-current="page" href="#">Chat Room</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="text-decoration: none;" href="#">Setting</a>
+              <a class="nav-link" style="text-decoration: none;" href="#">Profile</a>
             </li>
           </ul>
         </div>
         {% if user.is_authenticated %}
-        <a href="/logout" style="text-align: right; text-decoration: none;">Log out</a>
+        <a href="/profile" style="text-align: right; text-decoration: none;">{{user.username}}</a>
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <a href="/logout" style="text-align: right; text-decoration: none;">Logout</a>
         {% endif %}
       </div>
     </nav>
   </head>
   <body>
    {% if user.is_authenticated %}
-      <h2>Hello , {{user.username}}</h2>
+      <h1 style="text-align: center; color: white;">Hello , {{user.username}}</h1>
+      <div class="home-box">
+        <h3 style="text-align: center; color: black; font-family: Anton; font-size:3rem ;">Chat Room</h3>
+        <br>
+        <div class="home">
+          <label for="exampleInput" class="form-label">Name</label>
+          <input type="username" name="Name" class="form-control" id="input" placeholder="Name">
+          <br>
+          <label for="exampleInputPassword1" class="form-label">Chat Room name</label>
+          <input type="password" name="Room"class="form-control" id="input" placeholder="Room">
+        <br>
+          <button type="submit" class="button-home" style="font-family:Bangers; font-size:1.945rem;">Let's Chat</button>
+        </div>
+      </div>
    {% else %}
-      <h2> You need to Log in or Sign Up </h2>
+    <div class="home-box">
+      <h3 style="text-align: center; color: black; font-family: Anton; font-size:1.5625rem text;">Home</h3>
+      <br>
+      <div class="home">
+      <h3> You need to Log in or Sign Up </h3>
+      <br>
       <form action="/login">
-      <button type="submit" class="button1">Login</button>
+      <button type="submit" class="button1 button-home">Login</button>
       </form>
-      <br><br>
+      <br>
       <form action="/signup">
-      <button type="submit" class="button1">Sign up</button>
+      <button type="submit" class="button1 button-home">Sign up</button>
       </form>
+      </div>
+    </div>
    {% endif %}
+  </body>
 </html> 
