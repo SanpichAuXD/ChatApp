@@ -1,0 +1,87 @@
+* {
+    font-family: Varela;
+}
+html, body {
+    width: 100%;
+    height:100%;
+}  
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    margin: 0 auto;
+} 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.chatroom-box{
+    /* boxใหญ่ */
+    background-color:white;
+    width: 100rem;
+    height: 60rem;
+    border: 2px solid rgb(105, 78, 163);
+    border-radius: 1.6rem;
+    padding: 2rem;
+    font-size: large;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    margin: 0 auto;
+    max-width: 100rem;
+    align-content:flex-end;
+}
+#input{
+    position: absolute;
+    bottom: 2rem;
+    width: 82rem;
+}
+.button-chat:hover{
+    /* เปลี่ยนสีเมื่อเม้าส์ชี้ ปุ่ม send*/
+        background-color: rgb(105, 78, 163);
+        color: white;
+}
+.button-chat{
+    /*button chat*/
+    background-color:white ;
+    border: 2px solid rgb(105, 78, 163);
+    border-radius: 1.875rem;
+    color:black;
+    padding: 5px 5px;
+    text-align: center;
+    font-size: 2rem;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 12rem;
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    top: 90%;
+    right: 2%;
+}
+.chat-box{
+    background-color:white;
+    width: 95rem;
+    height: 15rem;
+    border: 2px solid rgb(105, 78, 163);
+    border-radius: 1.6rem;
+    padding: 1rem;
+    font-size: large;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    margin: 0 auto;
+    max-width: 100rem;
+    align-content:flex-end;
+}

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'sauce/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'sauce/css/chatroom.css' %}">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid" style="font-size: 1.75rem;">
@@ -21,56 +21,36 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" style="text-decoration: none;" aria-current="page" href="#">Chat Room</a>
+              <a class="nav-link active" style="text-decoration: none;" aria-current="page" href="/home">Chat Room</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" style="text-decoration: none;" href="#">Profile</a>
             </li>
           </ul>
         </div>
-        {% if user.is_authenticated %}
-        <a href="/profile" style="text-align: right; text-decoration: none;">{{user.username}}</a>
-        &nbsp; &nbsp; &nbsp; &nbsp;
-        <a href="/logout" style="text-align: right; text-decoration: none;">Logout</a>
-        {% endif %}
       </div>
     </nav>
   </head>
   <body>
-   {% if user.is_authenticated %}
-      <h1 style="text-align: center; color: white;">Hello , {{user.username}}</h1>
-      <div class="home-box">
-        <h3 style="text-align: center; color: black; font-family: Anton; font-size:3rem ;">Chat Room</h3>
-        <br>
-        <div class="home">
-         <form method="POST" action='checkroom'>
-         {% csrf_token %}
-          <label for="exampleInput" class="form-label">Name</label>
-          <input type="username" name="name" class="form-control" id="input" placeholder="Name">
-          <br>
-          <label for="exampleInputPassword1" class="form-label">Key Name</label>
-          <input name="room" class="form-control" id="input" placeholder="Room">
-        <br>
-          <button type="submit" class="button-home" style="font-family:Bangers; font-size:1.945rem;">Let's Chat</button>
-         </form>
-        </div>
+    <div class="chatroom-box">
+      <input type="username" name="name"  class="form-control" id="input" placeholder="message">
+      <button type="submit" class="button-chat" style="font-family:Bangers; ">Send</button>
+      <div class="chat-box">
+        <h3>Ri</h3>
+        <p>i na hee</p>
+        <p>17.09 21/11/21</p>
+    
+
+
       </div>
-   {% else %}
-    <div class="home-box">
-      <h3 style="text-align: center; color: black; font-family: Anton; font-size:1.5625rem text;">Home</h3>
-      <br>
-      <div class="home">
-      <h3> You need to Log in or Sign Up </h3>
-      <br>
-      <form action="/login">
-      <button type="submit" class="button1 button-home">Login</button>
-      </form>
-      <br>
-      <form action="/signup">
-      <button type="submit" class="button1 button-home">Sign up</button>
-      </form>
-      </div>
+
     </div>
-   {% endif %}
+
+
+
+
+
+
+
   </body>
-</html> 
+  </html>

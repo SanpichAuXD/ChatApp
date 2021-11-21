@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib import messages
+from Chatapp.models import Room, Message 
 # Create your views here.
 def loginform(request):
     return render(request,'login.html')
@@ -68,4 +69,16 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/home')
-    
+def profile(request):
+    return render(request, 'profile.html')
+def chatroom(request, room):
+    return render(request, 'chatroom.html')
+def checkroom(request):
+    room = request.POST.get('room')
+    username = request.POST.get('name')
+    if Room.objects.filter(name=room).exists():
+        return redirect('/'+room+'/?username='+username)
+    else:
+        new_room = Room.objects.create(name=room)
+        new_room.save()
+        return redirect('/'+room+'/?username='+username)

@@ -25,19 +25,23 @@
     {% csrf_token %}
     <div class="sign-up-box">
         <div class="box">
-            <h3 style="color: black;; font-size: 2rem; font-family: Anton;">Sign Up</h3>      
+            <h3 style="color: black;; font-size: 2rem; font-family: Anton;"><img class="input" src={% static 'sauce/images/sign_up.png' %} width="50">  Sign Up</h3>
         </div>
         <div class="sign-up">
-            <label  class="form-label">Username</label>
+            <label  class="form-label"> Username</label>
+            <img class="input" src={% static 'sauce/images/username.png' %} width="25">
             <input type="username" class="form-control" name="username" placeholder="username">
         <br>
-            <label  class="form-label">Email</label>
+            <label  class="form-label"> Email</label>
+            <img class="input" src={% static 'sauce/images/email.png' %} width="25">
             <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@example.com">
         <br>
-            <label class="form-label">Password</label>
+            <label class="form-label"> Password</label>
+            <img class="input" src={% static 'sauce/images/password.png' %} width="25">
             <input type="password" class="form-control" name="password" id="sign-up" placeholder="Password">
         <br>
-            <label class="form-label">Confirm Password</label>
+            <label class="form-label"> Confirm Password</label>
+            <img class="input" src={% static 'sauce/images/password.png' %} width="25">
             <input type="password" class="form-control" name="repassword" id="sign-up" placeholder="Confirm Password">
         </div><br><br>
         <div class="sign-up">
