@@ -9,48 +9,91 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'sauce/css/chatroom.css' %}">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid" style="font-size: 1.75rem;">
-        <a class="navbar-brand" href="#">ChatWithMe</a>
+        <a class="navbar-brand" href="/home">ChatWithMe</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" style="text-decoration: none;" aria-current="page" href="/home">Chat Room</a>
+              <a class="nav-link active" style="text-decoration: none;" href="#">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="text-decoration: none;" href="#">Profile</a>
             </li>
           </ul>
         </div>
+        <a class="nav-link active"  style="text-decoration: none;" id="show-room" aria-current="page">Chat Room : {{room}}</a>
+        <a class="nav-link active"  style="text-decoration: none;" id="show-name" aria-current="page">{{username}}</a>
       </div>
     </nav>
   </head>
   <body>
-    <div class="chatroom-box">
-      <input type="username" name="name"  class="form-control" id="input" placeholder="message">
-      <button type="submit" class="button-chat" style="font-family:Bangers; ">Send</button>
-      <div class="chat-box">
-        <h3>Ri</h3>
-        <p>i na hee</p>
+    <div class="chatroom-box" id="box">
+     {% comment %} <div class="chat-box" id="chat">
+        {% comment %} <h3>Ri</h3> {% endcomment %}
+        {% comment %} <p>i na hee</p>
         <p>17.09 21/11/21</p>
-    
-
-
-      </div>
-
+     </div> {% endcomment %}
     </div>
+    <script>
+    $(document).ready(function(){
+    setInterval(function(){
+      $.ajax({
+        type: "GET"
+        url: "/getallMessages/{{room}}/",
+        success: function(response){
+          console.log(response);
+          $("#box").empty();
+          for (var key in response.messages)
+          {
+              var temp="<div class='chat-box'><b>"+response.messages[key].user+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>";
+              $("#box").append(temp);
+          }
+        },
+        error: function(response){
+          alert('There is an error')
+        }
+      });
+    },1000);
+    })
 
-
-
-
-
-
-
+    
+    </script>
+    <div class="input-box">
+      <form id="sendform">
+        {% csrf_token %}
+         <input type="hidden" name="name" id="username" value={{username}}/>
+         <input type="hidden" name="room_id" id="room_id" value={{room_details.id}}>
+         <input type="text" name="message"  class="form-control" style="position: absolute; bottom: 2rem; width: 82rem;" id="message" placeholder="message"/>
+         <button type="submit" class="button-chat" style="font-family:Bangers; ">Send</button>
+       </form>
+    </div>
   </body>
-  </html>
+  <script type="text/javascript">
+    $(document).on('submit', '#sendform',function(send){
+      send.preventDefault();
+
+      $.ajax({
+        type:'POST',
+        url: '/send',
+        data:{
+           username:$('#username').val(),
+           room_id:$('#room_id').val(),
+           message:$('#message').val(),
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        success: function(data){
+            alert(data)
+        }
+      });
+      document.getElementById('message').value = ''
+
+  });
+  </script>
+</html>

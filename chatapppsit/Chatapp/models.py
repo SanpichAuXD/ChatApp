@@ -1,5 +1,5 @@
 from django.db import models
-import datetime
+from datetime import datetime
 # Create your models here.
 class Room(models.Model):
     name = models.CharField(max_length=1000)
@@ -7,8 +7,4 @@ class Message(models.Model):
     value = models.CharField(max_length=10000)
     user = models.CharField(max_length=100000)
     room = models.CharField(max_length=100000)
-
-
-
-
-    #ปวดขี้ ไปขี้แป
+    date = models.DateTimeField(default=datetime.now, blank=True)

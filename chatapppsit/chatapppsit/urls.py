@@ -28,6 +28,8 @@ urlpatterns = [
     path('logout', views.logout),
     path('profile', views.profile),
     path('<str:room>/', views.chatroom, name='room'),
-    path('checkroom', views.checkroom, name='checkroom')
+    path('checkroom', views.checkroom, name='checkroom'),
+    path('send', views.send, name='send'),
+    path('getallMessages/<str:room>/', views.allmessage)
     
 ]

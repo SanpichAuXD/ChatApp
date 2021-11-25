@@ -1,9 +1,11 @@
 from django.contrib import auth
+from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib import messages
 from Chatapp.models import Room, Message 
+from django.http import HttpResponse
 # Create your views here.
 def loginform(request):
     return render(request,'login.html')
@@ -72,13 +74,33 @@ def logout(request):
 def profile(request):
     return render(request, 'profile.html')
 def chatroom(request, room):
-    return render(request, 'chatroom.html')
+    username = request.GET.get('username')
+    room_details = Room.objects.get(name=room)
+    return render(request, 'chatroom.html', {
+        'username': username,
+        'room': room,
+        'room_details': room_details
+    })
 def checkroom(request):
     room = request.POST.get('room')
     username = request.POST.get('name')
+    
     if Room.objects.filter(name=room).exists():
         return redirect('/'+room+'/?username='+username)
     else:
         new_room = Room.objects.create(name=room)
         new_room.save()
         return redirect('/'+room+'/?username='+username)
+def send(request):
+    message = request.POST.get('message')
+    username = request.POST.get('username')
+    room_id = request.POST.get('room_id')
+    new_message = Message.objects.create(value=message, user=username, room=room_id)
+    print(room_id)
+    new_message.save()
+    return HttpResponse('Message sent')
+def allmessage(request, room):
+    room_details = Room.objects.get(name=room)
+    
+    messages = Message.object.filter(room=room_details.id)
+    return JsonResponse({"messages":list(messages.values())})
